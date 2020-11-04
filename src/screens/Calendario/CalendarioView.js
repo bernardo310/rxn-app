@@ -3,16 +3,20 @@ import { View, Text } from 'react-native'
 import Button from '../../components/core/Button'
 
 import styles from './CalendarioStyles';
+import Calendar from '../../components/core/Calendar';
 
 const CalendarioView = (props) => {
     return (
         <View style={styles.container}>
-            <Text >Calendario Screen</Text>
-            <Button onPress={() => {
-                props.navigation.navigate({
-                    routeName: 'Evento'
-                })
-            }}>Ir a evento</Button>
+            <Calendar />
+            <View style={styles.content}>
+                <Text >Calendario Screen</Text>
+                <Button onPress={() => {
+                    props.navigation.navigate({
+                        routeName: 'Evento'
+                    })
+                }}>Ir a evento</Button>
+            </View>
         </View>
     )
 }

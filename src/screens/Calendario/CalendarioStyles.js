@@ -4,6 +4,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+        padding: 10,
+    },
+    content: {
+        flex: 1,
+        // justifyContent: 'center',
         alignItems: 'center'
     }
 })
