@@ -4,6 +4,7 @@ import Button from '../../components/core/Button'
 import useEventHook from '../../helpers/getEventHook';
 
 import styles from './CalendarioStyles';
+import Calendar from '../../components/core/Calendar';
 
 const CalendarioView = (props) => {
     const startDate = '2020-10-21';
@@ -12,12 +13,15 @@ const CalendarioView = (props) => {
     
     return (
         <View style={styles.container}>
-            <Text >Calendario Screen</Text>
-            <Button onPress={() => {
-                props.navigation.navigate({
-                    routeName: 'Evento'
-                })
-            }}>Ir a evento</Button>
+            <Calendar />
+            <View style={styles.content}>
+                <Text >Calendario Screen</Text>
+                <Button onPress={() => {
+                    props.navigation.navigate({
+                        routeName: 'Evento'
+                    })
+                }}>Ir a evento</Button>
+            </View>
         </View>
     )
 }
