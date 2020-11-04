@@ -143,6 +143,10 @@ const Navigator = createBottomTabNavigator(tabsConfig, {
     inactiveBackgroundColor: Colors.primaryBlack,
     activeBackgroundColor: Colors.primaryBlack,
     showLabel: false,
+    style: {
+      backgroundColor: Colors.primaryBlack,
+    }
+
     // animationEnabled: true
   }
 })
