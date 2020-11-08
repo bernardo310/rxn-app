@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import getEvents from '../data/events';
 
-export const useEventHook = ({startDate, endDate}) => {
+export const useEvents = ({startDate, endDate}) => {
     const [loading, setLoading] = useState(false);
-    const [data, setData] = useState('');
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         setLoading(true);
@@ -19,4 +19,4 @@ export const useEventHook = ({startDate, endDate}) => {
     return { loading, data };
 };
 
-export default useEventHook;
+export default useEvents;

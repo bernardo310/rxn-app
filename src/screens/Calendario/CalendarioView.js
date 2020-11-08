@@ -1,35 +1,57 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-import Button from '../../components/core/Button'
-import useEventHook from '../../helpers/getEventHook';
+import React, { useState } from 'react'
+import { View, Text, ActivityIndicator } from 'react-native'
+import moment from 'moment';
 
+import Button from '../../components/core/Button'
+import useEvents from '../../hooks/useEvents';
 import styles from './CalendarioStyles';
 import Calendar from '../../components/core/Calendar';
+import EventRow from '../../components/calendar/EventRow';
+import COLORS from '../../constants/Colors';
 
-const CalendarioView = (props) => {
-    const startDate = '2020-10-21';
-    const endDate = '2020-12-25';
-    const {loading, data} = useEventHook({startDate, endDate});
-    
-    return (
-        <View style={styles.container}>
-            <Calendar />
-            <View style={styles.content}>
-                <Text >Calendario Screen</Text>
-                <Button onPress={() => {
-                    props.navigation.navigate({
-                        routeName: 'Evento'
-                    })
-                }}>Ir a evento</Button>
-            </View>
-        </View>
-    )
+const CalendarioView = ({ navigation }) => {
+	const [date, setDate] = useState(moment().format('YYYY-MM-DD'))
+	const [events, setEvents] = useState([]);
+	const onSelectDate = (newDate, newEvents) => {
+		setDate(newDate);
+		setEvents(newEvents);
+	}
+	const startDate = moment(date).startOf('month').format('YYYY-MM-DD');
+	const endDate = moment(date).endOf('month').format('YYYY-MM-DD');
+
+	const { loading, data } = useEvents({ startDate, endDate });
+
+	return (
+		<View style={styles.container}>
+			{!loading ? (
+				<Calendar
+					data={data}
+					date={date}
+					onSelectDate={onSelectDate}
+					setDate={setDate}
+				/>
+			) : (
+					<ActivityIndicator size="large" color={COLORS.accentYellow} />
+				)}
+			<View>
+				<Text style={styles.date}>{moment(date).format('LL')}</Text>
+				{events.length > 0 ? events.map((event) => (
+					<EventRow
+						event={event}
+						onPress={() => navigation.navigate({
+							routeName: 'Evento'
+						})}
+					/>
+				)) : (<Text >No hay eventos en esta fecha</Text>)}
+			</View>
+		</View >
+	)
 }
 
 CalendarioView.navigationOptions = navData => {
-    return {
-        headerTitle: 'Calendario',
-    }
+	return {
+		headerTitle: 'Calendario',
+	}
 }
 
 export default CalendarioView
