@@ -1,26 +1,57 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, ActivityIndicator } from 'react-native'
+import moment from 'moment';
+
 import Button from '../../components/core/Button'
-
+import useEvents from '../../hooks/useEvents';
 import styles from './CalendarioStyles';
+import Calendar from '../../components/core/Calendar';
+import EventRow from '../../components/calendar/EventRow';
+import COLORS from '../../constants/Colors';
 
-const CalendarioView = (props) => {
-    return (
-        <View style={styles.container}>
-            <Text >Calendario Screen</Text>
-            <Button onPress={() => {
-                props.navigation.navigate({
-                    routeName: 'Evento'
-                })
-            }}>Ir a evento</Button>
-        </View>
-    )
+const CalendarioView = ({ navigation }) => {
+	const [date, setDate] = useState(moment().format('YYYY-MM-DD'))
+	const [events, setEvents] = useState([]);
+	const onSelectDate = (newDate, newEvents) => {
+		setDate(newDate);
+		setEvents(newEvents);
+	}
+	const startDate = moment(date).startOf('month').format('YYYY-MM-DD');
+	const endDate = moment(date).endOf('month').format('YYYY-MM-DD');
+
+	const { loading, data } = useEvents({ startDate, endDate });
+
+	return (
+		<View style={styles.container}>
+			{!loading ? (
+				<Calendar
+					data={data}
+					date={date}
+					onSelectDate={onSelectDate}
+					setDate={setDate}
+				/>
+			) : (
+					<ActivityIndicator size="large" color={COLORS.accentYellow} />
+				)}
+			<View>
+				<Text style={styles.date}>{moment(date).format('LL')}</Text>
+				{events.length > 0 ? events.map((event) => (
+					<EventRow
+						event={event}
+						onPress={() => navigation.navigate({
+							routeName: 'Evento'
+						})}
+					/>
+				)) : (<Text >No hay eventos en esta fecha</Text>)}
+			</View>
+		</View >
+	)
 }
 
 CalendarioView.navigationOptions = navData => {
-    return {
-        headerTitle: 'Calendario',
-    }
+	return {
+		headerTitle: 'Calendario',
+	}
 }
 
 export default CalendarioView
