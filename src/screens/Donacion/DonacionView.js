@@ -18,7 +18,7 @@ const DonacionView = () => {
                 para su elaboración.
             </BodyText>
             <View style={styles.donate_btn_container}>
-                <Button onPress={() => {Linking.openURL('https://www.moneypool.mx/')}}>Ir a donar</Button>
+                <Button onPress={() => {Linking.openURL('https://www.moneypool.mx/p/kQJ4Qs8?utm_campaign=original')}}>Ir a donar</Button>
             </View>
 
         </View>
