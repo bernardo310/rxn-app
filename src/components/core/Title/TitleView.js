@@ -11,10 +11,12 @@ const TitleView = (props) => {
 const styles = StyleSheet.create({
     title: {
         fontFamily: 'montserrat-bold',
-        fontSize: 20,
+        fontSize: 22,
         color: Colors.primaryBlack,
         textAlign: 'center',
-        marginVertical: 25,
+        marginVertical: 20,
+        marginHorizontal: 10,
+        marginBottom: 5,
     }   
 })
 
