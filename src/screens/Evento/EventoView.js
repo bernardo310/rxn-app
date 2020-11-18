@@ -1,14 +1,15 @@
 import React from 'react'
-import { View, ScrollView, Text} from 'react-native'
+import { View, ScrollView, Text, ActivityIndicator} from 'react-native'
 import Button from '../../components/core/Button';
 import styles from './EventoStyles';
 import Bullet from '../../components/core/Bullet';
 import useEvent from '../../hooks/useEvent';
 import MapView from '../../components/map/MapsView';
 import moment from 'moment';
+import COLORS from '../../constants/Colors';
 
 
-const EventoView= (props) => {
+const EventoView = (props) => {
 
         const idEvent = props.navigation.getParam('idEvent');
         const { loading, data } = useEvent({ idEvent });
@@ -31,7 +32,12 @@ const EventoView= (props) => {
                     {/* <Bullet icon='map-marker-alt'>La Republica, Nuevo Leon</Bullet> */}
                 </View>
                 <Text style={styles.text}>Ubicación</Text>
-                <MapView name={name} date={inicio} lat={lat} lng={lng}/>
+                {!loading ? (
+				<MapView name={name} date={inicio} lat={lat} lng={lng}/>
+			    ) : (
+					<ActivityIndicator size="large" color={COLORS.accentYellow} />
+				)}
+                
                 <View style={styles.buttonContainer}>
                     <Button onPress={() => props.navigation.navigate(
                                     {routeName: 'Registro', params: {idEvent: idEvent}}
