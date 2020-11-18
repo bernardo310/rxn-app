@@ -8,7 +8,7 @@ const BulletView = (props) => {
     return (
         <View style={styles.bulletContainer}>
             {props.icon === 'rxn' ?
-                <Image source={require('../../../../assets/images/logo.png')} style={styles.bulletIcon} />
+                <Image source={require('../../../../assets/images/logo.png')} style={styles.bulletImage} />
                 :
                 <FontAwesome5 name={props.icon} style={styles.bulletIcon} size={25} color={COLORS.accentYellow} />
             }
@@ -32,6 +32,12 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     bulletIcon: {
+        width: 40,
+        height: 40,
+        marginRight: 10,
+        alignSelf:'center',
+    },
+    bulletImage: {
         width: 40,
         height: 40,
         marginRight: 10,
