@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, ActivityIndicator } from 'react-native'
+import { View, Text, ActivityIndicator, ScrollView } from 'react-native'
 import moment from 'moment';
 
 import Button from '../../components/core/Button'
@@ -22,7 +22,7 @@ const CalendarioView = ({ navigation }) => {
 	const { loading, data } = useEvents({ startDate, endDate });
 
 	return (
-		<View style={styles.container}>
+		<ScrollView contentContainerStyle={styles.container}>
 			{!loading ? (
 				<Calendar
 					data={data}
@@ -45,7 +45,7 @@ const CalendarioView = ({ navigation }) => {
 					/>
 				)) : (<Text >No hay eventos en esta fecha</Text>)}
 			</View>
-		</View >
+		</ScrollView >
 	)
 }
 
