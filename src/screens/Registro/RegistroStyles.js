@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flex: 1,
         alignItems: 'center',
+        paddingTop: 25
     },
     inputContainer: {
         flex: 1,

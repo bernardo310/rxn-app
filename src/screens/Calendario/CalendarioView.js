@@ -37,6 +37,7 @@ const CalendarioView = ({ navigation }) => {
 				<Text style={styles.date}>{moment(date).format('LL')}</Text>
 				{events.length > 0 ? events.map((event) => (
 					<EventRow
+						key={event.id}
 						event={event}
 						onPress={() => navigation.navigate(
 							{routeName: 'Evento', params: {idEvent: event.id}}

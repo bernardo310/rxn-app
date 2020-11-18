@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Alert, Keyboard, TouchableWithoutFeedback } from 'react-native'
+import { View, Alert, Keyboard, TouchableWithoutFeedback, ScrollView } from 'react-native'
 import styles from './RegistroStyles';
 import Input from '../../components/core/Input';
 import Button from '../../components/core/Button';
@@ -95,6 +95,8 @@ const RegistroView = (props) => {
     };
 
     return (
+        <ScrollView>
+
         <TouchableWithoutFeedback onPress = {() => {Keyboard.dismiss()}}>
             <View style={styles.container}>
                 <View style={styles.inputContainer}>
@@ -107,6 +109,7 @@ const RegistroView = (props) => {
                 </View>
             </View>
         </TouchableWithoutFeedback>
+        </ScrollView>
     )
 }
 
