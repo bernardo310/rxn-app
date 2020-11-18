@@ -11,27 +11,18 @@ const RegistroView = (props) => {
     const [inputName, setInputName] = useState('');
     const [inputEmail, setInputEmail] = useState('');
     const [inputPhoneNumber, setInputPhoneNumber] = useState('');
-    const [inputValidation, setInputValidation] = useState(true);
-
-    useEffect(() => {
-        if(inputValidation == false){
-            Alert.alert('Error en campos', 'Asegurese de utilizar el formato correcto de cada campo', [{text: 'Entendido', style: 'destructive'}]);
-            setInputValidation(true);
-        }
-    });
 
     const validateInputs = async() => {
-         if(inputName == '' || inputEmail == '' || inputPhoneNumber== ''){
-             Alert.alert('Campos incompletos', 'Debe completar todos los campos', [{text: 'Entendido', style: 'destructive'}]);
-             return;
-         }
-         validateInputName();
-         validateInputPhoneNumber();
-         validateInputEmail();
-         const name = inputName;
-         const email = inputEmail;
-         const phoneNumber = inputPhoneNumber;
-         if(inputValidation == true){
+        if(inputName == '' || inputEmail == '' || inputPhoneNumber== ''){
+            Alert.alert('Campos incompletos', 'Debe completar todos los campos', [{text: 'Entendido', style: 'destructive'}]);
+            return;
+        }
+        if(!(validateInputName() && validateInputEmail() && validateInputPhoneNumber())){
+            Alert.alert('Error en campos', 'Asegurece que utilizo el formato correcto', [{text: 'Entendido', style: 'destructive'}]);
+        }else{
+            const name = inputName;
+            const email = inputEmail;
+            const phoneNumber = inputPhoneNumber;
             const body = {
                 eventId,
                 name,
@@ -59,13 +50,14 @@ const RegistroView = (props) => {
     };
 
     const validateInputName = () => {
-        const pattern = /^[a-zA-z]+\s[a-zA-z]+$/;
+        const pattern = /^[a-zA-z]+$/;
         if(pattern.test(inputName)){
             Keyboard.dismiss();
+            return true;
         }
         else{
-            setInputValidation(false);
             setInputName('');
+            return false;
         }
     };
 
@@ -77,8 +69,10 @@ const RegistroView = (props) => {
         const pattern = /[a-z]+@[a-z]+\.[a-z]+$/;
         const lcInputEmail = inputEmail.toLowerCase();
         if(!pattern.test(lcInputEmail)){
-            setInputValidation(false);
             setInputEmail('');
+            return false;
+        }else{
+            return true;
         }
     };
 
@@ -90,7 +84,9 @@ const RegistroView = (props) => {
         const pattern = /[0-9]{10}$/;
         if(!pattern.test(inputPhoneNumber)){
             setInputPhoneNumber('');
-            setInputValidation(false);
+            return false;
+        }else{
+            return true;
         }
     };
 
