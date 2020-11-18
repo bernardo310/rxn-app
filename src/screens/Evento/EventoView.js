@@ -32,7 +32,7 @@ const EventoView = (props) => {
                     {/* <Bullet icon='map-marker-alt'>La Republica, Nuevo Leon</Bullet> */}
                 </View>
                 <Text style={styles.text}>Ubicación</Text>
-                {!loading ? (
+                {(!loading && lat) ? (
 				<MapView name={name} date={inicio} lat={lat} lng={lng}/>
 			    ) : (
 					<ActivityIndicator size="large" color={COLORS.accentYellow} />
