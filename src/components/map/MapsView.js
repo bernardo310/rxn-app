@@ -5,14 +5,14 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 export default class MapsView extends React.Component {
   render() {
     const {name, date, lat, lng} = this.props;
-    const latTemp= 25.659787;
-    const lngTemp= -100.421100;
+    console.log(lng);
+    
     return (
       <View style={styles.container}>
         <MapView style={styles.mapStyle} 
         initialRegion={{
-            latitude: latTemp,
-            longitude: lngTemp,
+            latitude: lat,
+            longitude: lng,
             latitudeDelta: .05,
             longitudeDelta: .09
         }}
@@ -20,8 +20,8 @@ export default class MapsView extends React.Component {
         >
             <MapView.Marker
                 coordinate={{
-                    latitude: latTemp,
-                    longitude: lngTemp,}}
+                    latitude: lat,
+                    longitude: lng,}}
                 title={name}
                 description={date}
             />
