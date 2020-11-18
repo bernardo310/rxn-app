@@ -13,7 +13,7 @@ const BulletView = (props) => {
                 <FontAwesome5 name={props.icon} style={styles.bulletIcon} size={25} color={COLORS.accentYellow} />
             }
             <View style={styles.bulletTextContainer}>
-                <Text style={{...styles.bulletText, textDecorationLine: (props.link ? 'underline': '')}} onPress={props.click}>{props.children}</Text>
+                <Text style={{...styles.bulletText, textDecorationLine: (props.link ? 'underline': 'none')}} onPress={props.click}>{props.children}</Text>
             </View>
         </View>
     )

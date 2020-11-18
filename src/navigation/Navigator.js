@@ -22,7 +22,7 @@ import Colors from '../constants/Colors';
 const defaultStackNavOptions = {
   headerTitleStyle: { fontFamily: 'montserrat-bold' },
   headerTitleAlign: { alignSelf: 'center' },
-  headerBackTitleStyle: { fontFamily: 'montserrat' },
+  headerBackTitleStyle: { fontFamily: 'montserrat-normal' },
   headerTintColor: Colors.primaryBlack,
 }
 
