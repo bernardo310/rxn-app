@@ -38,9 +38,9 @@ const CalendarioView = ({ navigation }) => {
 				{events.length > 0 ? events.map((event) => (
 					<EventRow
 						event={event}
-						onPress={() => navigation.navigate({
-							routeName: 'Evento'
-						})}
+						onPress={() => navigation.navigate(
+							{routeName: 'Evento', params: {idEvent: event.id}}
+						)}
 					/>
 				)) : (<Text >No hay eventos en esta fecha</Text>)}
 			</View>

@@ -4,7 +4,17 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        paddingLeft: 20,
+        paddingRight: 20
+    },
+    buttonContainer: {
+        flex: 1,
+        alignItems: 'center',
+    },
+    inputContainer: {
+        flex: 1,
+        alignItems: 'flex-start',
+        justifyContent: 'center'
     }
 })
 
