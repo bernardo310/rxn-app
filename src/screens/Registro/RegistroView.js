@@ -18,7 +18,7 @@ const RegistroView = (props) => {
             return;
         }
         if(!(validateInputName() && validateInputEmail() && validateInputPhoneNumber())){
-            Alert.alert('Error en campos', 'Asegurece que utilizo el formato correcto', [{text: 'Entendido', style: 'destructive'}]);
+            Alert.alert('Error en campos', 'Asegúrece que utilizó el formato correcto', [{text: 'Entendido', style: 'destructive'}]);
         }else{
             const name = inputName;
             const email = inputEmail;

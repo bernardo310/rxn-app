@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View, Text, ActivityIndicator, ScrollView } from 'react-native'
 import moment from 'moment';
-
+import Title from '../../components/core/Title';
 import Button from '../../components/core/Button'
 import useEvents from '../../hooks/useEvents';
 import styles from './CalendarioStyles';
@@ -43,7 +43,7 @@ const CalendarioView = ({ navigation }) => {
 							{routeName: 'Evento', params: {idEvent: event.id}}
 						)}
 					/>
-				)) : (<Text >No hay eventos en esta fecha</Text>)}
+				)) : (<Title >No hay eventos en esta fecha</Title>)}
 			</View>
 		</ScrollView >
 	)

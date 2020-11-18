@@ -5,9 +5,6 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 export default class MapsView extends React.Component {
   render() {
     const {name, date, lat, lng} = this.props;
-    console.log('nuevo');
-    console.log(lat);
-    console.log(lng);
     return (
       <View style={styles.container}>
         <MapView style={styles.mapStyle} 
