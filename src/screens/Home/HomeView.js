@@ -33,7 +33,7 @@ const HomeView = (props) => {
 
 HomeView.navigationOptions = navData => {
     return {
-        headerTitle: 'Home',
+        headerTitle: 'Taller RXN',
     }
 }
 
