@@ -8,8 +8,23 @@ const VideoView = (props) => {
     //buscar video en con videoId
     return (
         <View style={styles.container}>
+<<<<<<< Updated upstream
             <Text >Video Screen</Text>
 
+=======
+             <YoutubePlayer
+                height={250}
+                width={'100%'}
+                play={false}
+                videoId={videoId}
+                webViewStyle={{opacity:0.99}} //hack to avoid crash on android
+                style={styles.video}
+            /> 
+            <Title style={styles.videoTitle}>{title}</Title>
+            <Button onPress={() => Linking.openURL('https://www.youtube.com/channel/UCg_KQd362R7VIvN08i6ZVXw')} style={{backgroundColor: '#FF0000', marginTop: 20, height: 30, width:250}} btnTextSize={14}>
+                Ver Canal de Youtube
+            </Button>
+>>>>>>> Stashed changes
         </View>
     )
 }

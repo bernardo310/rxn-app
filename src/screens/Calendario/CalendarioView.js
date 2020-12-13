@@ -51,7 +51,7 @@ const CalendarioView = ({ navigation }) => {
 
 CalendarioView.navigationOptions = navData => {
 	return {
-		headerTitle: 'Calendario',
+		headerTitle: 'Calendario de Eventos',
 	}
 }
 
