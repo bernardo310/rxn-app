@@ -2,9 +2,17 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+    },
+    title: {
+        fontSize: 18,
+        fontWeight: 'bold'
+    },
+    description: {
+        maxWidth: '85%',
+        marginBottom: 10
     }
 })
 

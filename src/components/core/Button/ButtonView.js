@@ -4,7 +4,6 @@ import { Button } from 'galio-framework';
 import Colors from '../../../constants/Colors'
 
 const ButtonView = (props) => {
-    console.log(props.btnTextSize)
     const btnTextSize = props.btnTextSize != undefined ? props.btnTextSize : 20;
     return (
         <Button

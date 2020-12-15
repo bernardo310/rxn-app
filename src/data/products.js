@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const url = 'https://rxn-api.herokuapp.com';
 
-const getVideos = async () => {
+const getProducts = async () => {
     try {
-        const {data:{data}} = await axios.get(`${url}/gateway/videos`);
+        const { data: { data } } = await axios.get(`${url}/gateway/products`);
         return data;
     } catch (err) {
         return null
@@ -12,4 +12,4 @@ const getVideos = async () => {
 
 };
 
-export default getVideos;
+export default getProducts;
