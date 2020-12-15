@@ -1,6 +1,7 @@
 import React from 'react'
-import { View, Text, Linking, Image } from 'react-native'
-
+import { View, ScrollView, Text, Linking, Image } from 'react-native'
+import BodyText from '../../components/core/BodyText'
+import { WebView } from 'react-native-webview';
 
 import Button from '../../components/core/Button'
 
@@ -13,15 +14,16 @@ const ProductoView = (props) => {
     const product = props.navigation.getParam('product')
     image = product?.image.src;
     const regex = /(<([^>]+)>)/ig;
-    const result = product.body_html.replace(regex, '');
-    // //buscar producto en db con el id
-    console.log(image)
+    const result = product.body_html.replace(regex, '\n').trim().replace(/\n\s*\n\s*\n/g, '\n\n');
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             {image && <Image source={{ uri: image }} style={{ width: '100%', height: 200 }} />}
             <View >
                 <Text style={styles.title}>{title}</Text>
-                <Text>{result}</Text>
+                <BodyText style={styles.description}>
+                {result}
+            </BodyText>
+            {/* <WebView source={{ html: result }} style={{ width: '100%' }} /> */}
             </View>
             <Button
                 onPress={() => Linking
@@ -30,16 +32,16 @@ const ProductoView = (props) => {
             >
                 Comprar
             </Button>
-        </View>
+        </ScrollView>
     )
 }
 
 ProductoView.navigationOptions = navData => {
-    const productoId = navData.navigation.getParam('productoId');
+    const title = navData.navigation.getParam('title');
     //buscar nombre del producto en db con el id
     const producto = { name: 'Ejemplo Producto' }
     return {
-        headerTitle: producto.name,
+        headerTitle: title,
     }
 }
 
