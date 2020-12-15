@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     description: {
-        maxWidth: '85%'
+        maxWidth: '85%',
+        marginBottom: 10
     }
 })
 

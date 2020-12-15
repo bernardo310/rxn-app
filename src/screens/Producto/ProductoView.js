@@ -1,7 +1,6 @@
 import React from 'react'
 import { View, ScrollView, Text, Linking, Image } from 'react-native'
 import BodyText from '../../components/core/BodyText'
-import { WebView } from 'react-native-webview';
 
 import Button from '../../components/core/Button'
 
@@ -14,10 +13,10 @@ const ProductoView = (props) => {
     const product = props.navigation.getParam('product')
     image = product?.image.src;
     const regex = /(<([^>]+)>)/ig;
-    const result = product.body_html.replace(regex, '\n').trim().replace(/\n\s*\n\s*\n/g, '\n\n');
+    const result = product.body_html.replace(regex, '\n').replace(/\n\s*\n\s*\n/g, '\n\n').split('PRECAUCIONES')[0].trim();
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            {image && <Image source={{ uri: image }} style={{ width: '100%', height: 200 }} />}
+            {image && <Image source={{ uri: image }} style={{ width: '100%', height: 200, marginBottom: 15 }} />}
             <View >
                 <Text style={styles.title}>{title}</Text>
                 <BodyText style={styles.description}>
