@@ -20,7 +20,11 @@ const VideoView = (props) => {
     return (
         <View style={styles.container}>
              <YoutubePlayer
+<<<<<<< HEAD
+                height={250}
+=======
                 height={200}
+>>>>>>> 51e475d6cfbeb82238a67f3ba0c65b0430b187da
                 width={'100%'}
                 play={false}
                 videoId={videoId}

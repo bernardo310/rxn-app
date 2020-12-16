@@ -37,7 +37,7 @@ const RegistroView = (props) => {
                 setInputPhoneNumber('');
             }
             if(data==428){
-                Alert.alert('Registro repetido', 'Ya estas registrado a este evento!', [{text: 'Entendido', style: 'destructive'}]);
+                Alert.alert('Registro repetido', 'Ya estás registrado a este evento!', [{text: 'Entendido', style: 'destructive'}]);
                 setInputName('');
                 setInputEmail('');
                 setInputPhoneNumber('');
