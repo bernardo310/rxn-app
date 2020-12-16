@@ -10,6 +10,8 @@ const ButtonView = (props) => {
             style={[styles.btn, { ...props.style }]}
             onPress={props.onPress}
             color={Colors.accentBlue}
+            disabled={props.disabled}
+            loading={props.disabled}
         >
             <Text style={ {...styles.btnText, fontSize: btnTextSize }}  > {props.children}</Text>
         </Button>
