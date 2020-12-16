@@ -4,13 +4,14 @@ import { Button } from 'galio-framework';
 import Colors from '../../../constants/Colors'
 
 const ButtonView = (props) => {
+    const btnTextSize = props.btnTextSize != undefined ? props.btnTextSize : 20;
     return (
         <Button
-            style={styles.btn}
+            style={[styles.btn, { ...props.style }]}
             onPress={props.onPress}
             color={Colors.accentBlue}
         >
-            <Text style={styles.btnText}>{props.children}</Text>
+            <Text style={ {...styles.btnText, fontSize: btnTextSize }}  > {props.children}</Text>
         </Button>
     )
 }
@@ -19,14 +20,13 @@ const styles = StyleSheet.create({
     btn: {
         width: 300,
         height: 48,
-        paddingVertical:5
+        paddingVertical: 5
     },
     btnText: {
         fontFamily: 'montserrat-normal',
-        fontSize: 20,
         color: Colors.primaryWhite,
         textAlign: 'center',
-        
+
     }
 })
 

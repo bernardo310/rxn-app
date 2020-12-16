@@ -1,15 +1,30 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Linking } from 'react-native'
+import Title from '../../components/core/Title'
+import Button from '../../components/core/Button'
+import YoutubePlayer from "react-native-youtube-iframe";
 
 import styles from './VideoStyles';
 
 const VideoView = (props) => {
     const videoId = props.navigation.getParam('videoId')
-    //buscar video en con videoId
+    const title = props.navigation.getParam('title')
+    // const [playing, setPlaying] = useState(false);
+
+    // const onStateChange = useCallback((state) => {
+    //     if (state === "ended") {
+    //         setPlaying(true);
+    //         Alert.alert("video has finished playing!");
+    //     }
+    // }, []);
     return (
         <View style={styles.container}>
              <YoutubePlayer
+<<<<<<< HEAD
                 height={250}
+=======
+                height={200}
+>>>>>>> 51e475d6cfbeb82238a67f3ba0c65b0430b187da
                 width={'100%'}
                 play={false}
                 videoId={videoId}
@@ -25,12 +40,8 @@ const VideoView = (props) => {
 }
 
 VideoView.navigationOptions = navData => {
-    const videoId = navData.navigation.getParam('videoId')
-    //buscar nombre del video en db con el id
-    const video = { name:'Video Title 1'}
-
     return {
-        headerTitle: video.name,
+        headerTitle: 'Video',
     }
 }
 

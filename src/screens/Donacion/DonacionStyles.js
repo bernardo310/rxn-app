@@ -7,7 +7,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     donate_btn_container: {
-        marginTop: 30
+        marginBottom: 20
+    },
+    description:{
+        textAlign: 'left'
     }
 })
 
