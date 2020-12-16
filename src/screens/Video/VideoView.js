@@ -29,7 +29,7 @@ const VideoView = (props) => {
             /> 
             <Title style={styles.videoTitle}>{title}</Title>
             <Button onPress={() => Linking.openURL('https://www.youtube.com/channel/UCg_KQd362R7VIvN08i6ZVXw')} style={{backgroundColor: '#FF0000', marginTop: 20, height: 30, width:250}} btnTextSize={14}>
-                Ver Canal de Youtube
+                Ver Canal de YouTube
             </Button>
         </View>
     )

@@ -11,23 +11,29 @@ const RegistroView = (props) => {
     const [inputName, setInputName] = useState('');
     const [inputEmail, setInputEmail] = useState('');
     const [inputPhoneNumber, setInputPhoneNumber] = useState('');
+    const [inputAge, setInputAge] = useState('');
+    const [inputSchool, setInputSchool] = useState('');
 
     const validateInputs = async() => {
-        if(inputName == '' || inputEmail == '' || inputPhoneNumber== ''){
+        if(inputName == '' || inputEmail == '' || inputPhoneNumber== '' || inputAge== '' || inputSchool== ''){
             Alert.alert('Campos incompletos', 'Debe completar todos los campos', [{text: 'Entendido', style: 'destructive'}]);
             return;
         }
-        if(!(validateInputName() && validateInputEmail() && validateInputPhoneNumber())){
+        if(!(validateInputName() && validateInputEmail() && validateInputPhoneNumber() && validateInputAge())){
             Alert.alert('Error en campos', 'Asegúrece que utilizó el formato correcto', [{text: 'Entendido', style: 'destructive'}]);
         }else{
             const name = inputName;
             const email = inputEmail;
             const phoneNumber = inputPhoneNumber;
+            const age = inputAge;
+            const school = inputSchool;
             const body = {
                 eventId,
                 name,
                 email,
-                phoneNumber
+                phoneNumber,
+                age,
+                school
             };
             const data = await postVolunteer(body);
             if(data==200){
@@ -35,12 +41,16 @@ const RegistroView = (props) => {
                 setInputName('');
                 setInputEmail('');
                 setInputPhoneNumber('');
+                setInputAge('');
+                setInputSchool('');
             }
             if(data==428){
                 Alert.alert('Registro repetido', 'Ya estás registrado a este evento!', [{text: 'Entendido', style: 'destructive'}]);
                 setInputName('');
                 setInputEmail('');
                 setInputPhoneNumber('');
+                setInputAge('');
+                setInputSchool('');
             }
         }
     };
@@ -90,6 +100,24 @@ const RegistroView = (props) => {
         }
     };
 
+    const inputAgeHandler = inputText => {
+        setInputAge(inputText);
+    };
+
+    const validateInputAge = () => {
+        const pattern = /^[0-9]{1,3}$/;
+        if(!pattern.test(inputAge)){
+            setInputAge('');
+            return false;
+        }else{
+            return true;
+        }
+    };
+
+    const inputSchoolHandler = inputText => {
+        setInputSchool(inputText);
+    };
+
     return (
         <ScrollView>
 
@@ -99,6 +127,8 @@ const RegistroView = (props) => {
                     <Input text='Nombre' placeholder={'Ingrese su nombre y apellido'} autoCapitalize="words"  keyboardType="default" onChangeText={inputNameHandler} value={inputName} />
                     <Input text='Email' placeholder={'Ingrese su email'} keyboardType="email-address" onChangeText={inputEmailHandler} value={inputEmail} />
                     <Input text='Número telefónico' placeholder={'Ingrese su número telefónico (10 dígitos)'} keyboardType="phone-pad" onChangeText={inputPhoneNumberHandler} value={inputPhoneNumber} />
+                    <Input text='Edad' placeholder={'Ingrese su edad (numérica)'} keyboardType="phone-pad" onChangeText={inputAgeHandler} value={inputAge} />
+                    <Input text='Escuela/universidad' placeholder={'Ingrese su escuela/universidad'} keyboardType="default" onChangeText={inputSchoolHandler} value={inputSchool} />
                 </View>
                 <View style={styles.buttonContainer}>
                     <Button onPress={validateInputs}>Confirmar registro</Button>

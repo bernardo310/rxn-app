@@ -50,7 +50,7 @@ const ImagenesView = () => {
                     //selectedLabelStyle={{color: COLORS.accentYellow}}
                 />
                 <View style={styles.buttonContainer}>
-                    <Button onPress={filterImages}>Filtrar imagenes</Button>
+                    <Button onPress={filterImages}>Filtrar imágenes</Button>
                 </View>
             </View>
             <View style={styles.imageContainer}>

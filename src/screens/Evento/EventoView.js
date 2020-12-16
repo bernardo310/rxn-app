@@ -13,7 +13,7 @@ const EventoView = (props) => {
 
         const idEvent = props.navigation.getParam('idEvent');
         const { loading, data } = useEvent({ idEvent });
-        const {name, description, startDate, endDate, lat, lng} = data;
+        const {name, description, startDate, endDate, lat, lng, address} = data;
         moment.locale();
         const inicio = moment(startDate).format('ll');
         const fin = moment(endDate).format('ll');
@@ -29,7 +29,7 @@ const EventoView = (props) => {
                 <View style={styles.bullets}>
                     <Bullet icon='calendar-day'>{fecha}</Bullet>
                     <Bullet icon='list-ul'>{description}</Bullet>
-                    {/* <Bullet icon='map-marker-alt'>La Republica, Nuevo Leon</Bullet> */}
+                    <Bullet icon='map-marker-alt'>{address}</Bullet>
                 </View>
                 <Text style={styles.text}>Ubicación</Text>
                 {(!loading && lat) ? (
